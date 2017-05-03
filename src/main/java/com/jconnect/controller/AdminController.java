@@ -39,7 +39,6 @@ import com.jconnect.validator.UserFormValidator;
 @ComponentScan("com.jconnect.service")
 @RequestMapping("/admin")
 public class AdminController {
-	int a =9;
 	@Resource(name = "userService")
 	protected UserService userService;
 	@Resource(name = "userFormValidator")
