@@ -1,0 +1,54 @@
+<th:block layout:decorator="layoutAdmin">
+	<head>
+<title>Jet Types</title>
+	</head>
+	<body layout:fragment="content" class="home-page user">
+
+
+		<div class="col-sm-8 col-md-9">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Liste des Types</div>
+				<div class="panel-body">
+					<div class="btnContainer">
+						<!-- <form class="col-md-4" th:action="@{/admin/user/search}"
+							method="get">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Rechercher"
+									name="userSearch" id="search" />
+							</div>
+
+						</form> -->
+						<a class="btn btn-primary" href="/admin/jetType" role="button">Ajouter
+							Type</a>
+							<div class="clearfix"></div>
+					</div>
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<tr>
+								<th>#</th>
+								<th>Nom</th>
+								<th>Action</th>
+
+							</tr>
+							<tbody id="bodyTab">
+								<tr th:fragment="result" th:each="jetType, iter: ${allJetTypes}">
+									<td th:utext="${iter.count}"></td>
+									<td th:utext="${jetType.name}"></td>
+								
+									<td><div class="btn-group">
+											<a th:href="'/admin/JetType/edit/'+${jetType.id}" class="btn btn-success">Edit
+											</a> <a th:href="'/admin/jetType/delete/'+${jetType.id}"
+												class="btn btn-danger"
+												onclick="return confirm('are you sure?')"> Remove</a>
+										</div></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</body>
+</th:block>

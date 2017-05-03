@@ -1,0 +1,94 @@
+<th:block layout:decorator="layout">
+	<head>
+<title>Accueil</title>
+	</head>
+	<body layout:fragment="content" class="home-page">
+
+
+		<div id="reservation-form">
+			<div class="panel panel-primary" id="homepannel">
+				<div class="panel-heading">Reserver Vol</div>
+				<div class="panel-body">
+					<div class="">
+						<div th:if="${param.success}" class="alert alert-success"
+							role="alert">Votre Reservation a &eacute;t&eacute;
+							effectu&eacute;e avec success&eacute;</div>
+						<form th:action="@{/reservation/add}" th:method="POST"
+							th:object="${reservationform}">
+							<div class="checkbox">
+								<label> <input type="checkbox" name="typeReservation"
+									value="A" /> Aller Simple
+								</label> <label> <input type="checkbox" name="typeReservation"
+									value="A-R" /> Aller Retour
+								</label> <label> <input type="checkbox" name="typeReservation"
+									value="M-V" /> Multi Vols
+								</label>
+							</div>
+							<div class="form-group col-md-6">
+								<span class="icon icon-flights" aria-hidden="true"> <label
+									for="exampleInputEmail1">Ville Depart</label> <span
+									th:if="${#fields.hasErrors('villeDepart')}"
+									th:errors="*{villeDepart}" class="error-text">error</span> <input
+									type="text" class="form-control" placeholder="depart"
+									th:field="*{villeDepart}" />
+								</span>
+
+							</div>
+							<div class="form-group col-md-6">
+								<label for="exampleInputPassword1">Ville Arriv&eacute;e</label>
+								<span th:if="${#fields.hasErrors('villeArrivee')}"
+									th:errors="*{villeArrivee}" class="error-text">error</span> <input
+									type="text" class="form-control" placeholder="arriv&eacute;e"
+									th:field="*{villeArrivee}" />
+							</div>
+
+							<div class="form-group col-md-6">
+								<label for="exampleInputPassword1">Depart le</label> <span
+									th:if="${#fields.hasErrors('dateDepart')}"
+									th:errors="*{dateDepart}" class="error-text">error</span> <input
+									type="text" class="form-control datepicker" autocomplete="off"
+									placeholder="date depart" th:field="*{dateDepart}" />
+
+							</div>
+
+							<div class="form-group col-md-6">
+								<label for="exampleInputPassword1">Retour le</label> <input
+									type="text" class="form-control datepicker" autocomplete="off"
+									placeholder="date retour" th:field="*{dateRetour}" />
+							</div>
+
+							<div class="form-group col-md-6">
+								<label for="exampleInputPassword1">Nombre des Places</label> <input
+									type="number" class="form-control"
+									placeholder="Nombre des Places" th:field="*{nbPassager}" />
+							</div>
+
+							<div class="form-group col-md-6">
+								<label for="exampleInputPassword1">Jet</label> <select
+									class="form-control" name="jet_id">
+									<option th:each="jet : ${jetsDispo}" th:value="${jet.id}"
+										th:text="${jet.name}+' '+ ${jet.type.name}+' ('+${jet.nbPlace}+' places)'">1</option>
+
+								</select>
+							</div>
+
+
+
+							<input th:if="${user} != null" type="hidden" name="user_id"
+								th:value="${user.id}" />
+
+
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10 btnContainer">
+
+									<button type="submit" class="btn btn-primary jbtn-add">Ajouter</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</th:block>

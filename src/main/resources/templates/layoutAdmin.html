@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title layout:title-pattern="$DECORATOR_TITLE -$CONTENT_TITLE"></title>
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<!-- <link rel="stylesheet" href="/css/jquery-ui.min.css" />
+<link rel="stylesheet" href="/css/jquery-ui.structure.min.css" />
+<link rel="stylesheet" href="/css/jquery-ui.theme.min.css" /> -->
+</head>
+<body>
+<div th:include="fragments/nav"></div>
+<div class="container">
+<div th:include="fragments/leftAdminNav"></div>
+<div layout:fragment="content" ></div>
+</div>
+<div th:replace="fragments/footer :: footer">footer</div>
+
+</body>
+</html>

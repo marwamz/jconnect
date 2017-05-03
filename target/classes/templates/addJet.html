@@ -1,0 +1,69 @@
+<th:block layout:decorator="layoutAdmin">
+	<head>
+<title>ajouter Pilote</title>
+	</head>
+	<body layout:fragment="content" class="home-page">
+		<div class="col-md-9">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Ajouter Jet</div>
+				<div class="panel-body">
+					<div class="col-md-6 col-xs-12 col-md-offset-3">
+						<form th:action="@{/admin/jet/add}" th:method="POST"
+							th:object="${jetform}">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Nom</label> <span
+									th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+									class="error-text">error</span> <input type="text"
+									class="form-control" placeholder="nom" th:field="*{name}" />
+
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">Type</label> <span
+									th:if="${#fields.hasErrors('typejet')}" th:errors="*{typejet}"
+									class="error-text">error</span> 
+									<select name="type" class="form-control">
+									<option th:each="typejet : ${allTypes}" th:value="${typejet.id}" th:utext="${typejet.name}"></option>
+									</select>
+									</div>
+
+							<div class="form-group">
+								<label for="exampleInputPassword1">Nombre des Places</label> <span
+									th:if="${#fields.hasErrors('nbPlace')}" th:errors="*{nbPlace}"
+									class="error-text">error</span> <input type="number"
+									class="form-control" placeholder="nbPlace"
+									th:field="*{nbPlace}" />
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">Image URL</label> <span
+									th:if="${#fields.hasErrors('imageUrl')}"
+									th:errors="*{imageUrl}" class="error-text">error</span> <input
+									type="text" class="form-control" placeholder="imageUrl"
+									th:field="*{imageUrl}" />
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">Description</label> <span
+									th:if="${#fields.hasErrors('description')}"
+									th:errors="*{description}" class="error-text">error</span> <textarea
+									type="textarea" class="form-control" placeholder="description"
+									th:field="*{description}" rows="10"></textarea>
+							</div>
+
+							<div class="checkbox">
+								<label> <input type="checkbox" name="disponible" />
+									Disponible
+								</label>
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10 btnContainer">
+
+									<button type="submit" class="btn btn-primary jbtn-add">Ajouter</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</th:block>

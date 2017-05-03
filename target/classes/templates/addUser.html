@@ -1,0 +1,61 @@
+<th:block layout:decorator="layoutAdmin">
+	<head>
+<title>ajouter Utilisateur</title>
+	</head>
+	<body layout:fragment="content">
+		<div class="col-md-9">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Ajouter Utilisateur</div>
+				<div class="panel-body">
+					<div class="col-md-6 col-xs-12 col-md-offset-3">
+						<form th:action="@{/admin/user/add}" th:method="POST"
+							th:object="${userform}">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Nom</label> <span
+									th:if="${#fields.hasErrors('lastName')}"
+									th:errors="*{lastName}" class="error-text">error</span> <input
+									type="text" class="form-control" placeholder="nom"
+									th:field="*{lastName}" />
+
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">Prenom</label> <span
+									th:if="${#fields.hasErrors('firstName')}"
+									th:errors="*{firstName}" class="error-text">error</span> <input
+									type="text" class="form-control" placeholder="prenom"
+									th:field="*{firstName}" />
+							</div>
+
+							<div class="form-group">
+								<label for="exampleInputPassword1">Email</label> <span
+									th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+									class="error-text">error</span> <input type="email"
+									class="form-control" placeholder="email" th:field="*{email}" />
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">Telephone</label> <span
+									th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}"
+									class="error-text">error</span> <input type="tel"
+									class="form-control" placeholder="tel" th:field="*{tel}" />
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">Authority</label> <select
+									name="authorities" class="form-control">
+									<option th:each="authority : ${authorities}"
+										th:value="${authority}" th:utext="${authority}"></option>
+								</select>
+
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10 btnContainer">
+
+									<button type="submit" class="btn btn-primary jbtn-add">Ajouter</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</th:block>

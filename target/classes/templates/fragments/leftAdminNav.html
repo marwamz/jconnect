@@ -1,0 +1,16 @@
+<ul class="nav nav-pills nav-stacked left-nav col-md-3">
+	<li role="presentation" th:class="${#httpServletRequest.requestURI.indexOf('/admin/index') != -1}? active
+	"><a th:href="@{/admin/index}">Dashboared</a></li>
+	<li role="presentation"  th:class="${#httpServletRequest.requestURI.indexOf('/admin/manageUser') != -1}? active
+	"><a
+		th:href="@{/admin/manageUser}">G&eacute;rer Utilisateurs</a></li>
+	<li role="presentation" th:class="${#httpServletRequest.requestURI.indexOf('/admin/managePilotes') != -1}? active
+	"><a th:href="@{/admin/managePilotes}">G&eacute;rer Pilotes</a></li>
+	<li role="presentation"  th:class="${#httpServletRequest.requestURI.indexOf('/admin/manageJets') != -1}? active
+	"><a th:href="@{/admin/manageJets}">G&eacute;rer Jets</a></li>
+	<li role="presentation"  th:class="${#httpServletRequest.requestURI.indexOf('/admin/manageReservation') != -1}? active
+	"><a th:href="@{/admin/manageReservation}">G&eacute;rer
+			R&eacute;servations</a></li>
+	<li role="presentation"><a href="#">G&eacute;rer Vols</a></li>
+	<li role="presentation"><a href="/admin/AllJetTypes">G&eacute;rer Types des Jets</a></li>
+</ul>

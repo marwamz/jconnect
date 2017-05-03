@@ -1,0 +1,58 @@
+<th:block layout:decorator="layoutAdmin">
+	<head>
+<title>Resrvation</title>
+	</head>
+	<body layout:fragment="content" class="home-page">
+	
+		<div class="col-sm-8 col-md-9">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Liste des Reservation</div>
+				<div class="panel-body">
+					<div class="btnContainer">
+						<form class="col-md-4" th:action="@{/admin/resrvation/search}"
+							method="get">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Rechercher"
+									name="reservationSearch" id="reservationSearch" />
+							</div>
+
+						</form>
+						<a class="btn btn-primary" href="/" role="button">Ajouter
+							Reservation</a>
+							<div class="clearfix"></div>
+					</div>
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<tr>
+							<th>#</th>
+								<th>Nom Prenom</th>
+								<th>Vol ID</th>
+								<th>Jet Name</th>
+								<th> Pilote</th>
+								<th>Action</th>
+
+							</tr>
+							<tbody id="bodyTab">
+								<tr th:fragment="result" th:each="reservation, iter: ${allreservations}">
+									<td th:utext="${iter.count}"></td>
+									<td th:utext="${reservation.user.firstName} +' '+${reservation.user.lastName}"></td>
+									<td th:utext="${reservation.vol.id}"></td>
+									<td th:utext="${reservation.jet.name}"></td>
+									<td ><span th:if="${reservation.pilote !=null}" th:utext="${reservation.pilote.firstName}+' '+${reservation.pilote.lastName}"></span></td>
+									<td><div class="btn-group">
+											<a th:href="'/admin/reservation/editReservation/'+${reservation.id}" class="btn btn-success">Edit
+											</a> <a 
+												class="btn btn-danger"
+												onclick="return confirm('are you sure?')"> Remove</a>
+										</div></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	
+	</body>
+	</th:block>

@@ -1,0 +1,76 @@
+<th:block layout:decorator="layoutAdmin">
+	<head>
+<title>editer jet</title>
+	</head>
+	<body layout:fragment="content" class="home-page">
+		<div class="col-md-9">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Modifier Jet</div>
+				<div class="panel-body">
+					<div class="col-md-6 col-xs-12 col-md-offset-3">
+						<form th:action="@{/admin/jet/editJet}" th:method="POST"
+							th:object="${jet}">
+								<div class="form-group">
+								<label for="exampleInputEmail1"></label> <input type="hidden"
+									class="form-control" placeholder="id" th:field="*{id}" />
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Nom</label> <span
+									th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+									class="error-text">error</span> <input type="text"
+									class="form-control" placeholder="nom" th:field="*{name}" />
+
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">Type</label>
+									<select name="type" class="form-control">
+									<option th:each="typejet : ${allTypes}" th:value="${typejet.id}" th:utext="${typejet.name}"
+									th:selected="${jet.type.id} == ${typejet.id} ? selected"></option>
+									</select>
+									</div>
+							<!-- <div class="form-group">
+								<label for="exampleInputPassword1">Type</label> <span
+									th:if="${#fields.hasErrors('type')}" th:errors="*{type}"
+									class="error-text">error</span> <input type="text"
+									class="form-control" placeholder="type" th:field="*{type}" />
+							</div> -->
+
+							<div class="form-group">
+								<label for="exampleInputPassword1">Nombre des Places</label> <span
+									th:if="${#fields.hasErrors('nbPlace')}" th:errors="*{nbPlace}"
+									class="error-text">error</span> <input type="number"
+									class="form-control" placeholder="nbPlace"
+									th:field="*{nbPlace}" />
+							</div>
+						<div class="form-group">
+								<label for="exampleInputPassword1">Image URL</label> <span
+									th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}"
+									class="error-text">error</span> <input type="text"
+									class="form-control" placeholder="imageUrl"
+									th:field="*{imageUrl}" />
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">Description</label> <span
+									th:if="${#fields.hasErrors('description')}" th:errors="*{description}"
+									class="error-text">error</span> <textarea
+									class="form-control" placeholder="description" th:field="*{description}"  rows="15"></textarea>
+							</div>
+
+							<div class="checkbox">
+								<label> <input type="checkbox" name="disponible" /> Disponible
+								</label>
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10 btnContainer">
+
+									<button type="submit" class="btn btn-primary jbtn-add">Modifier</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</th:block>

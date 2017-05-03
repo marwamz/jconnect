@@ -1,0 +1,90 @@
+<th:block layout:decorator="layoutAdmin">
+	<head>
+<title>Modifier Pilote</title>
+	</head>
+	<body layout:fragment="content" class="home-page">
+
+		<div class="col-md-9">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Modifier Pilote</div>
+				<div class="panel-body">
+					<div class="col-md-6 col-xs-12 col-md-offset-3">
+						<form th:action="@{/reservation/add}" th:method="POST"
+							th:object="${reservation}">
+							<div class="checkbox">
+								<label> <input type="checkbox" name="typeReservation"
+									value="A" /> Aller Simple
+								</label> <label> <input type="checkbox" name="typeReservation"
+									value="A-R" /> Aller Retour
+								</label> <label> <input type="checkbox" name="typeReservation"
+									value="M-V" /> Multi Vols
+								</label>
+							</div>
+							<div class="form-group col-md-6">
+								<span class="icon icon-flights" aria-hidden="true"> <label
+									for="exampleInputEmail1">Ville Depart</label> <input
+									type="text" class="form-control" placeholder="depart"
+									disabled="disabled" th:field="*{vol.villeDepart}" />
+								</span>
+
+							</div>
+							<div class="form-group col-md-6">
+								<label for="exampleInputPassword1">Ville Arriv&eacute;e</label>
+								<input type="text" class="form-control"
+									placeholder="arriv&eacute;e" disabled="disabled"
+									th:field="*{vol.villeArrivee}" />
+							</div>
+
+							<div class="form-group col-md-6">
+								<label for="exampleInputPassword1">Depart le</label> <input
+									disabled="disabled" type="text" class="form-control "
+									placeholder="date depart" th:field="*{vol.dateDepart}" />
+
+							</div>
+
+							<div class="form-group col-md-6">
+								<label for="exampleInputPassword1">Retour le</label> <input
+									disabled="disabled" type="text" class="form-control "
+									placeholder="date retour" th:field="*{vol.dateRetour}" />
+							</div>
+
+							<div class="form-group col-md-6">
+								<label for="exampleInputPassword1">Nombre des Places</label> <input
+									disabled="disabled" type="number" class="form-control"
+									placeholder="Nombre des Places" th:field="*{vol.nbPassager}" />
+							</div>
+
+							<div class="form-group col-md-6">
+								<label for="exampleInputPassword1">Jet</label> <input disabled="disabled"
+									type="text" class="form-control"
+									placeholder="Nombre des Places" th:field="*{jet.name}" />
+
+							</div>
+							
+							
+							<div class="form-group col-md-6">
+								<label for="exampleInputPassword1">Pilote</label> <select class="form-control">
+								
+								<option th:each="pilote : ${pilotesDispo}" th:value="${pilote.id}" th:utext="${pilote.lastName}"></option> 
+								</select>
+
+							</div>
+
+
+
+							<input type="hidden" name="user_id" value="19" />
+
+
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10 btnContainer">
+
+									<button type="submit" class="btn btn-primary jbtn-add">Ajouter</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</th:block>

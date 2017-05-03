@@ -1,0 +1,31 @@
+<th:block layout:decorator="layout">
+	<head>
+<title>Nos Jets</title>
+	</head>
+	<body layout:fragment="content" class="home-page">
+		<div class="jets container">
+			<div>
+				<h2>Nos diff&eacute;rents types de jets priv&eacute;s et leurs
+					am&eacute;nagements</h2>
+				<p>Du jet l&eacute;ger &agrave; l&#146;avion de ligne VIP, il
+					existe un grand nombre d&#146;avions aux caract&eacute;ristiques et
+					aux performances tr&egrave;s vari&eacute;es. Nous les avons
+					class&eacute;s par cat&eacute;gorie pour vous aider &agrave; mieux
+					vous y retrouver.</p>
+			</div>
+			<div th:each="typeJet : ${allTypes}">
+				<div class="col-md-12">
+					<div class="col-md-6" th:each="jet ,iter : ${typeJet.jets}"
+						th:if="${iter.count} &lt; 3 ">
+						<a th:href="'/jet/'+${jet.id}"><img th:src="${jet.imageUrl}"
+							style="max-width: 100%; height: 316.66px;" /></a>
+					</div>
+
+				</div>
+
+				<p th:utext="${typeJet.description}"></p>
+			</div>
+		</div>
+
+	</body>
+</th:block>
